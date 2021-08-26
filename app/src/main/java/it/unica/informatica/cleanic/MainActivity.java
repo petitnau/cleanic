@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        switchToFragment(new HomeFragment());
+
         navbar = findViewById(R.id.bottom_navigation);
 
         navbar.setOnItemSelectedListener(item -> {
@@ -37,11 +39,14 @@ public class MainActivity extends AppCompatActivity {
                 default:
                     throw new IllegalStateException("Unexpected value: " + item.getItemId());
             }
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.content, selectedFragment);
-            transaction.commit();
-
+            switchToFragment(selectedFragment);
             return true;
         });
+    }
+
+    private void switchToFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.content, fragment);
+        transaction.commit();
     }
 }

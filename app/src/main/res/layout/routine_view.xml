@@ -7,47 +7,65 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
+    <com.google.android.material.card.MaterialCardView
+        android:layout_height="110dp"
+        android:layout_width="match_parent"
+        android:clickable="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="96dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-        tools:layout_editor_absoluteX="0dp">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation">
 
-        <TextView
-            android:id="@+id/textView"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/time_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:fontFamily="monospace"
-            android:text="03:15"
-            android:textSize="32sp"
-            app:layout_constraintBottom_toTopOf="@+id/textView2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:text="Fulminator"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            app:cardElevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:cardCornerRadius="16dp"
+            android:clickable="true">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="3dp">
 
-        <Switch
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:text="03:15"
+                    android:textSize="32sp" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/time"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:text="Fulminator" />
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/switch1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
             android:layout_marginRight="32dp"
+            android:minWidth="56dp"
+            android:minHeight="48dp"
             android:scaleX="1.5"
             android:scaleY="1.5"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/view"
             app:layout_constraintEnd_toStartOf="@+id/moreInfo"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,9 +76,17 @@
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:background="@android:color/transparent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_baseline_more_vert_24" />
+
+        <View
+            android:id="@+id/view"
+            style="@style/Divider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 </merge>
