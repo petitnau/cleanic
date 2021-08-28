@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         navbar = findViewById(R.id.bottom_navigation);
 
         navbar.setOnItemSelectedListener(item -> {
-            System.out.println("ciao " + item.getItemId());
             Fragment selectedFragment;
             switch(item.getItemId()) {
                 case R.id.home_tab:

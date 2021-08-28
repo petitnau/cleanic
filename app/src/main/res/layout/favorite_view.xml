@@ -12,7 +12,6 @@
             android:layout_width="170dp"
             android:layout_height="110dp"
             android:layout_margin="8dp"
-            android:padding="20dp"
             app:cardElevation="8dp"
             app:cardBackgroundColor="#fafafa"
             app:layout_constraintBottom_toBottomOf="parent"
