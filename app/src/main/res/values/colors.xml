@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_10">#EFE0FF</color>
+    <color name="purple_10">#F4EDFC</color>
     <color name="purple_100">#D1ACFF</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_300">#9B56FF</color>
@@ -11,4 +11,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="bg_1">#F7F7F7</color>
+    <color name="bg_2">#FBFBFB</color>
+    <color name="bg_3">#F0F0F0</color>
+    <color name="green_select">#97ffb5</color>
 </resources>

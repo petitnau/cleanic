@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -20,7 +21,7 @@
             app:title="">
 
             <EditText
-                android:id="@+id/textField"
+                android:id="@+id/routineName"
                 style="@style/Widget.Design.TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -28,11 +29,12 @@
                 android:imeOptions="actionDone"
                 android:inputType="text"
                 android:maxLines="1"
+                android:minHeight="48dp"
                 android:textColor="@color/white"
                 android:textColorHint="#ccc"
                 android:textSize="20sp"
-                android:textStyle="bold"
 
+                android:textStyle="bold"
                 app:hintAnimationEnabled="false" />
         </com.google.android.material.appbar.MaterialToolbar>
 
@@ -41,8 +43,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/purple_10"
         android:orientation="vertical"
-        android:paddingHorizontal="16dp">
+        android:paddingHorizontal="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -50,245 +53,401 @@
             android:layout_marginTop="16dp"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="16dp"
-                android:fontFamily="monospace"
-                android:text="03:15"
-                android:textSize="64sp" />
 
-            <Space
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="8dp" />
+                android:layout_height="wrap_content">
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="8dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" Repeat"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
-
-            <View
-                style="@style/Divider"
-                android:layout_marginVertical="8dp" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/materialCardView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="70sp"
-                    android:layout_gravity="center"
-                    android:layout_marginHorizontal="2dp"
-                    android:backgroundTint="#f9f9f9"
-                    android:clickable="true"
-                    android:minWidth="48dp"
-                    app:cardCornerRadius="12dp"
-                    app:layout_constraintEnd_toStartOf="@+id/materialCardView"
-                    app:layout_constraintHorizontal_chainStyle="packed"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TextView
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/time_card"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:paddingHorizontal="10dp"
-                        android:text="Mon" />
-                </com.google.android.material.card.MaterialCardView>
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        app:cardElevation="0dp">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/materialCardView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="70sp"
-                    android:layout_gravity="center"
-                    android:layout_marginHorizontal="2dp"
-                    android:backgroundTint="#f9f9f9"
-                    android:clickable="true"
-                    android:minWidth="48dp"
-                    app:cardCornerRadius="12dp"
-                    app:layout_constraintEnd_toStartOf="@+id/materialCardView3"
-                    app:layout_constraintStart_toEndOf="@+id/materialCardView2"
-                    app:layout_constraintTop_toTopOf="parent">
+                        <TextView
+                            android:id="@+id/timeText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="16dp"
+                            android:fontFamily="monospace"
+                            android:text="03:15"
+                            android:textSize="64sp" />
+                    </com.google.android.material.card.MaterialCardView>
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:paddingHorizontal="10dp"
-                        android:text="Tue" />
-                </com.google.android.material.card.MaterialCardView>
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="vertical">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/materialCardView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="70sp"
-                    android:layout_gravity="center"
-                    android:layout_marginHorizontal="2dp"
-                    android:backgroundTint="#f9f9f9"
-                    android:clickable="true"
-                    android:minWidth="48dp"
-                    app:cardCornerRadius="12dp"
-                    app:layout_constraintEnd_toStartOf="@+id/materialCardView4"
-                    app:layout_constraintStart_toEndOf="@+id/materialCardView"
-                    app:layout_constraintTop_toTopOf="parent">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="8dp"
+                            android:drawableStart="@drawable/ic_baseline_date_range_24"
+                            android:drawableLeft="@drawable/ic_baseline_date_range_24"
+                            android:paddingVertical="8dp"
+                            android:text=" Repeat"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:paddingHorizontal="10dp"
-                        android:text="Wed" />
-                </com.google.android.material.card.MaterialCardView>
+                        <View
+                            style="@style/Divider" />
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/materialCardView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="70sp"
-                    android:layout_gravity="center"
-                    android:layout_marginHorizontal="2dp"
-                    android:backgroundTint="#f9f9f9"
-                    android:clickable="true"
-                    android:minWidth="48dp"
-                    app:cardCornerRadius="12dp"
-                    app:layout_constraintEnd_toStartOf="@+id/materialCardView5"
-                    app:layout_constraintStart_toEndOf="@+id/materialCardView3"
-                    app:layout_constraintTop_toTopOf="parent">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:background="@color/white"
+                            android:layout_gravity="center"
+                            android:paddingHorizontal="8dp"
+                            android:paddingTop="4dp">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:paddingHorizontal="10dp"
-                        android:text="Thu" />
-                </com.google.android.material.card.MaterialCardView>
+                            <com.google.android.material.button.MaterialButtonToggleGroup
+                                android:id="@+id/toggleButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <Space
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"/>
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/MondayButton"
+                                    style="?attr/materialButtonOutlinedStyle"
+                                    android:layout_width="0dp"
+                                    android:layout_height="70dp"
+                                    android:layout_weight="1"
+                                    android:layout_gravity="center"
+                                    android:textSize="12sp"
+                                    android:padding="0dp"
+                                    android:text="Mon"/>
+                                <Space
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"/>
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/TuesdayButton"
+                                    style="?attr/materialButtonOutlinedStyle"
+                                    android:layout_width="0dp"
+                                    android:layout_height="70dp"
+                                    android:layout_weight="1"
+                                    android:layout_gravity="center"
+                                    android:textSize="12sp"
+                                    android:padding="0dp"
+                                    android:text="Tue"/>
+                                <Space
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"/>
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/WednesdayButton"
+                                    style="?attr/materialButtonOutlinedStyle"
+                                    android:layout_width="0dp"
+                                    android:layout_height="70dp"
+                                    android:layout_weight="1"
+                                    android:layout_gravity="center"
+                                    android:textSize="12sp"
+                                    android:padding="0dp"
+                                    android:text="Wed"/>
+                                <Space
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"/>
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/ThursdayButton"
+                                    style="?attr/materialButtonOutlinedStyle"
+                                    android:layout_width="0dp"
+                                    android:layout_height="70dp"
+                                    android:layout_weight="1"
+                                    android:layout_gravity="center"
+                                    android:textSize="12sp"
+                                    android:padding="0dp"
+                                    android:text="Thu"/>
+                                <Space
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"/>
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/FridayButton"
+                                    style="?attr/materialButtonOutlinedStyle"
+                                    android:layout_width="0dp"
+                                    android:layout_height="70dp"
+                                    android:layout_weight="1"
+                                    android:layout_gravity="center"
+                                    android:textSize="12sp"
+                                    android:padding="0dp"
+                                    android:text="Fri"/>
+                                <Space
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"/>
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/SaturdayButton"
+                                    style="?attr/materialButtonOutlinedStyle"
+                                    android:layout_width="0dp"
+                                    android:layout_height="70dp"
+                                    android:layout_weight="1"
+                                    android:layout_gravity="center"
+                                    android:textSize="12sp"
+                                    android:padding="0dp"
+                                    android:text="Sat"/>
+                                <Space
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"/>
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/SundayButton"
+                                    style="?attr/materialButtonOutlinedStyle"
+                                    android:layout_width="0dp"
+                                    android:layout_height="70dp"
+                                    android:layout_weight="1"
+                                    android:layout_gravity="center"
+                                    android:textSize="12sp"
+                                    android:padding="0dp"
+                                    android:text="Sun"/>
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/materialCardView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="70sp"
-                    android:layout_gravity="center"
-                    android:layout_marginHorizontal="2dp"
-                    android:backgroundTint="#f9f9f9"
-                    android:clickable="true"
-                    android:minWidth="48dp"
-                    app:cardCornerRadius="12dp"
-                    app:layout_constraintEnd_toStartOf="@+id/materialCardView6"
-                    app:layout_constraintStart_toEndOf="@+id/materialCardView4"
-                    app:layout_constraintTop_toTopOf="parent">
+                                <Space
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"/>
+                            </com.google.android.material.button.MaterialButtonToggleGroup>
+                        </LinearLayout>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:paddingHorizontal="10dp"
-                        android:text="Fri" />
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/materialCardView6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="70sp"
-                    android:layout_gravity="center"
-                    android:layout_marginHorizontal="2dp"
-                    android:backgroundTint="#f9f9f9"
-                    android:clickable="true"
-                    android:minWidth="48dp"
-                    app:cardCornerRadius="12dp"
-                    app:layout_constraintEnd_toStartOf="@+id/materialCardView7"
-                    app:layout_constraintStart_toEndOf="@+id/materialCardView5"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:paddingHorizontal="10dp"
-                        android:text="Sat" />
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/materialCardView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="70sp"
-                    android:layout_gravity="center"
-                    android:layout_marginHorizontal="2dp"
-                    android:backgroundTint="#f9f9f9"
-                    android:clickable="true"
-                    android:minWidth="48dp"
-                    app:cardCornerRadius="12dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/materialCardView6"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:paddingHorizontal="10dp"
-                        android:text="Sun" />
-                </com.google.android.material.card.MaterialCardView>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
 
         </LinearLayout>
 
-        <LinearLayout
+        <Space
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
-            android:orientation="vertical">
+            android:layout_height="8dp" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="8dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Select Rooms"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
-
-            <View
-                style="@style/Divider"
-                android:layout_marginVertical="8dp" />
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@color/bg_2"
+                android:orientation="vertical">
 
-                <ImageView
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="300sp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:adjustViewBounds="true"
-                    android:padding="1dp"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/ic_map_base" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:drawableStart="@drawable/ic_baseline_meeting_room_24"
+                    android:drawableLeft="@drawable/ic_baseline_meeting_room_24"
+                    android:paddingVertical="8dp"
+                    android:text=" Select Rooms"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textStyle="bold" />
 
+                <View style="@style/Divider" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/map_colored"
+                        android:layout_width="match_parent"
+                        android:layout_height="300sp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:adjustViewBounds="true"
+                        android:clickable="true"
+                        android:padding="1dp"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/map_colored" />
+
+                    <ImageView
+                        android:id="@+id/map_gray"
+                        android:layout_width="match_parent"
+                        android:layout_height="300sp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:padding="1dp"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/map_gray" />
+
+                    <ImageView
+                        android:visibility="invisible"
+                        android:id="@+id/map_active_bathroom"
+                        android:layout_width="match_parent"
+                        android:layout_height="300sp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:padding="1dp"
+                        android:scaleType="fitCenter"
+                        app:tint="@color/green_select"
+                        app:srcCompat="@drawable/map_active_bathroom" />
+
+                    <ImageView
+                        android:visibility="invisible"
+                        android:id="@+id/map_active_bedroom1"
+                        android:layout_width="match_parent"
+                        android:layout_height="300sp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:padding="1dp"
+                        android:scaleType="fitCenter"
+                        app:tint="@color/green_select"
+                        app:srcCompat="@drawable/map_active_bedroom1" />
+
+                    <ImageView
+                        android:visibility="invisible"
+                        android:id="@+id/map_active_bedroom2"
+                        android:layout_width="match_parent"
+                        android:layout_height="300sp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:padding="1dp"
+                        android:scaleType="fitCenter"
+                        app:tint="@color/green_select"
+                        app:srcCompat="@drawable/map_active_bedroom2" />
+
+                    <ImageView
+                        android:visibility="invisible"
+                        android:id="@+id/map_active_hallway"
+                        android:layout_width="match_parent"
+                        android:layout_height="300sp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:padding="1dp"
+                        android:scaleType="fitCenter"
+                        app:tint="@color/green_select"
+                        app:srcCompat="@drawable/map_active_hallway" />
+
+                    <ImageView
+                        android:visibility="invisible"
+                        android:id="@+id/map_active_kitchen"
+                        android:layout_width="match_parent"
+                        android:layout_height="300sp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:padding="1dp"
+                        android:scaleType="fitCenter"
+                        app:tint="@color/green_select"
+                        app:srcCompat="@drawable/map_active_kitchen" />
+
+                    <ImageView
+                        android:visibility="invisible"
+                        android:id="@+id/map_active_living"
+                        android:layout_width="match_parent"
+                        android:layout_height="300sp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:padding="1dp"
+                        android:scaleType="fitCenter"
+                        app:tint="@color/green_select"
+                        app:srcCompat="@drawable/map_active_living" />
+
+                    <ImageView
+                        android:visibility="invisible"
+                        android:id="@+id/map_active_storage"
+                        android:layout_width="match_parent"
+                        android:layout_height="300sp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:padding="1dp"
+                        android:scaleType="fitCenter"
+                        app:tint="@color/green_select"
+                        app:srcCompat="@drawable/map_active_storage" />
+
+                    <ImageView
+                        android:visibility="invisible"
+                        android:id="@+id/map_active_veranda"
+                        android:layout_width="match_parent"
+                        android:layout_height="300sp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:padding="1dp"
+                        android:scaleType="fitCenter"
+                        app:tint="@color/green_select"
+                        app:srcCompat="@drawable/map_active_veranda" />
+
+                    <ImageView
+                        android:id="@+id/map_border"
+                        android:layout_width="match_parent"
+                        android:layout_height="300sp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:padding="1dp"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/map_border" />
+
+                </RelativeLayout>
             </LinearLayout>
-        </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 </LinearLayout>

@@ -9,11 +9,11 @@
     <com.google.android.material.card.MaterialCardView
             android:id="@+id/card"
             android:clickable="true"
-            android:layout_width="170dp"
-            android:layout_height="110dp"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
             android:layout_margin="8dp"
-            app:cardElevation="8dp"
-            app:cardBackgroundColor="#fafafa"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="#f0f0f0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="Routine name"
-                    android:textSize="18sp"
+                    android:textSize="18dp"
                     android:textAppearance="?attr/textAppearanceHeadline6" />
                 </LinearLayout>
 
