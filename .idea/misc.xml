@@ -7,6 +7,7 @@
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/drawable/divider.xml" value="0.46794871794871795" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/drawable/fade_image_background.xml" value="0.5703125" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/drawable/ic_baseline_date_range_24.xml" value="0.427734375" />
+        <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.14791666666666667" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/drawable/ic_baseline_meeting_room_24.xml" value="0.427734375" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/drawable/ic_baseline_more_vert_24.xml" value="0.427734375" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/drawable/ic_baseline_settings_remote_24.xml" value="0.34322916666666664" />
@@ -22,14 +23,15 @@
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/activity_settings.xml" value="0.3307291666666667" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/favorite_remote_page.xml" value="0.35655737704918034" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/favorite_view.xml" value="0.5" />
-        <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/fragment_home.xml" value="0.415625" />
+        <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/fragment_home.xml" value="0.18659420289855072" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/fragment_remote.xml" value="0.25" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/fragment_routine_edit.xml" value="0.3307291666666667" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/fragment_routines.xml" value="0.415625" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/notification_view.xml" value="0.33" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/routine_edit_activity.xml" value="0.22" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/routine_info_menu.xml" value="0.16736801836266257" />
-        <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/routine_view.xml" value="0.67" />
+        <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/routine_view.xml" value="0.6275933609958506" />
+        <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/today_routine_view.xml" value="2.0" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/menu/bottom_app_bar.xml" value="0.3307291666666667" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.32708333333333334" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/menu/routine_edit_appbar.xml" value="0.3307291666666667" />

@@ -3,15 +3,14 @@ package it.unica.informatica.cleanic;
 import static it.unica.informatica.cleanic.utils.Utils.toggleVisibility;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -21,21 +20,20 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.timepicker.MaterialTimePicker;
 import com.google.android.material.timepicker.TimeFormat;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
-import java.util.List;
-import java.util.UUID;
+import java.util.stream.IntStream;
 
 import it.unica.informatica.cleanic.utils.Routine;
 import it.unica.informatica.cleanic.utils.Utils;
-import it.unica.informatica.cleanic.utils.Utils.Rooms;
+import it.unica.informatica.cleanic.utils.Utils.Room;
 
 public class RoutineEditActivity extends AppCompatActivity {
 
     CardView timeCard;
     TextView timeText;
     ImageView map_colored;
-    List<ImageView> map = new ArrayList<>();
+    ImageView[] map;
     MaterialButton[] weekdays = new MaterialButton[7];
     MaterialToolbar topBar;
 
@@ -44,6 +42,8 @@ public class RoutineEditActivity extends AppCompatActivity {
 
     private int hour;
     private int minutes;
+    private boolean isTimePickerOpen;
+    private boolean isEditing;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -51,56 +51,44 @@ public class RoutineEditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.routine_edit_activity);
 
+        isEditing = getIntent().getExtras() != null;
+        if (isEditing) {
+            isTimePickerOpen = getIntent().getExtras().getBoolean("isTimePickerOpen");
+            routine = Routine.getRoutineFromJson(getIntent().getExtras().getString("Routine"), this);
+        }
+        else {
+            Calendar calendar = Calendar.getInstance();
+            hour = calendar.get(Calendar.HOUR_OF_DAY);
+            minutes = calendar.get(Calendar.MINUTE);
+            routine = new Routine(hour, minutes, this);
+        }
+
         topBar = findViewById(R.id.topAppBar);
-
-        topBar.setNavigationOnClickListener(l -> {
-            //handle X
-        });
-
-        topBar.setOnMenuItemClickListener(l -> {
-            switch (l.getItemId()) {
-                case R.id.save:
-                    System.out.println("CIAOOO");
-                    saveRoutine();
-                    return true;
-            }
-
-            return false;
-        });
-
         routineName = findViewById(R.id.routineName);
         timeCard = findViewById(R.id.time_card);
         map_colored = findViewById(R.id.map_colored);
-
-        for (Rooms room : Rooms.values()) {
-            ImageView roomImage = findViewById(room.getResourceId());
-            map.add(roomImage);
-        }
-
-        Calendar calendar = Calendar.getInstance();
-        hour = calendar.get(Calendar.HOUR_OF_DAY);
-        minutes = calendar.get(Calendar.MINUTE);
-
         timeText = findViewById(R.id.timeText);
-        timeText.setText(Utils.TIME_FORMATTER.format(calendar.getTime()));
 
-        timeCard.setOnClickListener(v -> {
-
-            MaterialTimePicker picker = new MaterialTimePicker.Builder()
-                    .setTimeFormat(TimeFormat.CLOCK_12H)
-                    .setHour(hour)
-                    .setMinute(minutes)
-                    .build();
-            picker.show(getSupportFragmentManager(), "routine_time_picker");
-
-            picker.addOnPositiveButtonClickListener(dialog -> {
-                int newHour = picker.getHour();
-                int newMinute = picker.getMinute();
-                setTime(newHour, newMinute);
-            });
+        topBar.setNavigationOnClickListener(l -> {
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
         });
-
-        map_colored.setOnTouchListener((View.OnTouchListener) (v, event) -> {
+        topBar.setOnMenuItemClickListener(l -> {
+            switch (l.getItemId()) {
+                case R.id.save:
+                    saveRoutine();
+                    Intent intent = new Intent(this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
+                    return true;
+            }
+            return false;
+        });
+        timeCard.setOnClickListener(v -> {
+            openTimePicker();
+        });
+        map_colored.setOnTouchListener((v, event) -> {
             if (event.getAction() != MotionEvent.ACTION_DOWN)
                 return false;
 
@@ -113,54 +101,49 @@ public class RoutineEditActivity extends AppCompatActivity {
             imageView.setDrawingCacheEnabled(false);
 
             int pixel = bitmapImg.getPixel(x, y);
-            String pixel_hex = String.format("#%08x", (0xFFFFFFFF & pixel));
-            bitmapImg.recycle();
-
-            switch (pixel_hex) {
-                case "#ff6f009d":
-                    toggleVisibility(map.get(Rooms.BEDROOM1.ordinal()));
-                    break;
-                case "#ff9b9b9b":
-                    toggleVisibility(map.get(Rooms.LIVING_ROOM.ordinal()));
-                    break;
-                case "#ffffbb00":
-                    toggleVisibility(map.get(Rooms.KITCHEN.ordinal()));
-                    break;
-                case "#ff0c00ff":
-                    toggleVisibility(map.get(Rooms.BEDROOM2.ordinal()));
-                    break;
-                case "#ff00af00":
-                    toggleVisibility(map.get(Rooms.VERANDA.ordinal()));
-                    break;
-                case "#ff01dcff":
-                    toggleVisibility(map.get(Rooms.BATHROOM.ordinal()));
-                    break;
-                case "#ffff0004":
-                    toggleVisibility(map.get(Rooms.STORAGE_ROOM.ordinal()));
-                    break;
-                case "#ff653d00":
-                    toggleVisibility(map.get(Rooms.ANDITO.ordinal()));
-                    break;
+            Room room = Room.colorToRoom(pixel);
+            if (room != null) {
+                toggleVisibility(map[room.ordinal()]);
             }
+
+            bitmapImg.recycle();
             return true;
         });
 
-        weekdays[0] = findViewById(R.id.MondayButton);
-        weekdays[1] = findViewById(R.id.TuesdayButton);
-        weekdays[2] = findViewById(R.id.WednesdayButton);
-        weekdays[3] = findViewById(R.id.ThursdayButton);
-        weekdays[4] = findViewById(R.id.FridayButton);
-        weekdays[5] = findViewById(R.id.SaturdayButton);
-        weekdays[6] = findViewById(R.id.SundayButton);
+        setDays(routine.getWeekDays());
+        setMap(routine.getMap());
+
+        timeText.setText(Utils.TIME_FORMATTER.format(routine.getCalendar().getTime()));
+        routineName.setText(routine.getName());
+
+        if (isTimePickerOpen) {
+            openTimePicker();
+        }
     }
 
     private void saveRoutine() {
-        System.out.println(this.getApplicationContext());
-        Routine test = new Routine(UUID.randomUUID(), routineName.toString(), timeText.getText().toString(), map, weekdays, getApplicationContext());
-        test.saveRoutine();
-        System.out.println(UUID.randomUUID());
+        routine.setName(routineName.getText().toString());
+        routine.setHour(hour);
+        routine.setMinutes(minutes);
+        routine.setMap(Arrays.stream(map).map(x -> x.getVisibility() == View.VISIBLE).toArray(Boolean[]::new));
+        routine.setWeekDays(Arrays.stream(weekdays).map(MaterialButton::isChecked).toArray(Boolean[]::new));
+        routine.update();
     }
 
+    private void openTimePicker() {
+        MaterialTimePicker picker = new MaterialTimePicker.Builder()
+                .setTimeFormat(TimeFormat.CLOCK_12H)
+                .setHour(isEditing ? routine.getHour() : hour)
+                .setMinute(isEditing ? routine.getMinutes() : minutes)
+                .build();
+        picker.show(getSupportFragmentManager(), "routine_time_picker");
+
+        picker.addOnPositiveButtonClickListener(dialog -> {
+            int newHour = picker.getHour();
+            int newMinute = picker.getMinute();
+            setTime(newHour, newMinute);
+        });
+    }
 
     private void setTime(int newHour, int newMinute) {
         Calendar cal = Calendar.getInstance();
@@ -172,5 +155,29 @@ public class RoutineEditActivity extends AppCompatActivity {
         timeText.setText(format);
         hour = newHour;
         minutes = newMinute;
+    }
+
+    public void setDays(Boolean[] days) {
+        System.out.println("ORCO");
+        System.out.println(days);
+        System.out.println(weekdays);
+        weekdays[0] = findViewById(R.id.MondayButton);
+        weekdays[1] = findViewById(R.id.TuesdayButton);
+        weekdays[2] = findViewById(R.id.WednesdayButton);
+        weekdays[3] = findViewById(R.id.ThursdayButton);
+        weekdays[4] = findViewById(R.id.FridayButton);
+        weekdays[5] = findViewById(R.id.SaturdayButton);
+        weekdays[6] = findViewById(R.id.SundayButton);
+
+        for (int i = 0; i < weekdays.length; i++){
+            weekdays[i].setChecked(days[i]);
+        }
+    }
+    private void setMap(Boolean[] booleanMapArray) {
+        this.map = IntStream.range(0, Room.values().length).mapToObj(i -> {
+            ImageView roomImage = findViewById(Room.values()[i].getResourceId());
+            roomImage.setVisibility(booleanMapArray[i] ? View.VISIBLE : View.INVISIBLE);
+            return roomImage;
+        }).toArray(ImageView[]::new);
     }
 }

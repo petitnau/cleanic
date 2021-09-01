@@ -7,25 +7,40 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
+import it.unica.informatica.cleanic.utils.Routine;
+import it.unica.informatica.cleanic.utils.Utils;
+
 public class FavoritesCollectionAdapter extends FragmentStateAdapter {
+    Fragment fragment;
+
     public FavoritesCollectionAdapter(Fragment fragment) {
         super(fragment);
+        this.fragment = fragment;
     }
 
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        // Return a NEW fragment instance in createFragment(int)
-        Fragment fragment = new TabObjectFragment();
+        List<Routine> routines = Routine.getFavorites(fragment.getContext());
+
+        List<Routine> routines_selected;
+        if (routines.size() > position*2 + 2)
+            routines_selected = routines.subList(position, position+2);
+        else
+            routines_selected = routines.subList(position, position+1);
+
+        Fragment fragment = new TabObjectFragment(routines_selected);
         Bundle args = new Bundle();
-        // Our object is just an integer :-P
-        args.putInt(TabObjectFragment.ARG_OBJECT, position + 1);
         fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public int getItemCount() {
-        return 2;
+        return Utils.halfCeil(Routine.getFavorites(fragment.getContext()).size());
     }
 }

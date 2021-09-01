@@ -13,13 +13,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:id="@+id/favorite_list"
         android:gravity="center"
         android:orientation="horizontal">
         <include
+            android:id="@+id/favorite1"
             layout="@layout/favorite_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <include
+            android:id="@+id/favorite2"
             layout="@layout/favorite_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
