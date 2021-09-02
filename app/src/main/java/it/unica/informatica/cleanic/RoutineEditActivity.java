@@ -40,8 +40,6 @@ public class RoutineEditActivity extends AppCompatActivity {
     EditText routineName;
     Routine routine;
 
-    private int hour;
-    private int minutes;
     private boolean isTimePickerOpen;
     private boolean isEditing;
 
@@ -58,8 +56,8 @@ public class RoutineEditActivity extends AppCompatActivity {
         }
         else {
             Calendar calendar = Calendar.getInstance();
-            hour = calendar.get(Calendar.HOUR_OF_DAY);
-            minutes = calendar.get(Calendar.MINUTE);
+            int hour = calendar.get(Calendar.HOUR_OF_DAY);
+            int minutes = calendar.get(Calendar.MINUTE);
             routine = new Routine(hour, minutes, this);
         }
 
@@ -123,8 +121,6 @@ public class RoutineEditActivity extends AppCompatActivity {
 
     private void saveRoutine() {
         routine.setName(routineName.getText().toString());
-        routine.setHour(hour);
-        routine.setMinutes(minutes);
         routine.setMap(Arrays.stream(map).map(x -> x.getVisibility() == View.VISIBLE).toArray(Boolean[]::new));
         routine.setWeekDays(Arrays.stream(weekdays).map(MaterialButton::isChecked).toArray(Boolean[]::new));
         routine.update();
@@ -133,8 +129,8 @@ public class RoutineEditActivity extends AppCompatActivity {
     private void openTimePicker() {
         MaterialTimePicker picker = new MaterialTimePicker.Builder()
                 .setTimeFormat(TimeFormat.CLOCK_12H)
-                .setHour(isEditing ? routine.getHour() : hour)
-                .setMinute(isEditing ? routine.getMinutes() : minutes)
+                .setHour(routine.getHour())
+                .setMinute(routine.getMinutes())
                 .build();
         picker.show(getSupportFragmentManager(), "routine_time_picker");
 
@@ -153,8 +149,8 @@ public class RoutineEditActivity extends AppCompatActivity {
 
         String format = Utils.TIME_FORMATTER.format(cal.getTime());
         timeText.setText(format);
-        hour = newHour;
-        minutes = newMinute;
+        routine.setHour(newHour);
+        routine.setMinutes(newMinutes);
     }
 
     public void setDays(Boolean[] days) {
