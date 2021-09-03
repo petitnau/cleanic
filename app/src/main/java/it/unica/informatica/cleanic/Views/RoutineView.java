@@ -69,14 +69,15 @@ public class RoutineView extends LinearLayout {
 
         weekDays.setText(routine.getWeekDaysText());
 
-        routineName.setText(routine.name);
+        String name = routine.getName();
+        routineName.setText(name.isEmpty() ? "Untitled" : name);
         if(routine.isFavorite()) {
             routineName.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_favorite_24, 0);
         }
-        switchMaterial.setChecked(routine.active);
+        switchMaterial.setChecked(routine.isActive());
 
         switchMaterial.setOnClickListener(l -> {
-            routine.active = switchMaterial.isChecked();
+            routine.setActive(switchMaterial.isChecked());
             routine.update();
         });
 
@@ -122,7 +123,6 @@ public class RoutineView extends LinearLayout {
             switch (i.getItemId()) {
                 case R.id.favorite:
                     routine.setFavorite(true);
-                    Routine.getTodayRoutines(getContext()).stream().forEach(x -> System.out.println("test"+ x.getName()));
                     routine.update();
                     fragment.updateList();
                     break;

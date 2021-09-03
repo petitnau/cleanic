@@ -36,20 +36,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="16dp">
-
         <LinearLayout
-            android:id="@+id/routine_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp">
 
-
+                <LinearLayout
+                    android:id="@+id/routine_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+    
+    
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="80dp"/>
         </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
     </ScrollView>
 
 

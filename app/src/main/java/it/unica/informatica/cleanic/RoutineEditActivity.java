@@ -68,7 +68,7 @@ public class RoutineEditActivity extends AppCompatActivity {
         timeText = findViewById(R.id.timeText);
 
         topBar.setNavigationOnClickListener(l -> {
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, HomeActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
         });
@@ -76,7 +76,7 @@ public class RoutineEditActivity extends AppCompatActivity {
             switch (l.getItemId()) {
                 case R.id.save:
                     saveRoutine();
-                    Intent intent = new Intent(this, MainActivity.class);
+                    Intent intent = new Intent(this, HomeActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     startActivity(intent);
                     return true;

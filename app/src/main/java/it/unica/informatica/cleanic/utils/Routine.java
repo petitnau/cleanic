@@ -16,13 +16,13 @@ import java.util.stream.Stream;
 
 public class Routine implements Comparable {
 
-    UUID uuid;
-    Boolean[] map;
-    Boolean[] weekDays;
-    public String name;
-    public int hour;
-    public int minutes;
-    public boolean active;
+    private UUID uuid;
+    private Boolean[] map;
+    private Boolean[] weekDays;
+    private String name;
+    private int hour;
+    private int minutes;
+    private boolean active;
     private boolean isFavorite;
 
     //Excluded from json
@@ -51,7 +51,6 @@ public class Routine implements Comparable {
     public static List<Routine> getTodayRoutines(Context context) {
         return getRoutines(context).stream().filter(Routine::isActive).filter(Routine::isToday).collect(Collectors.toList());
     }
-
 
     public static List<Routine> getFavorites(Context context) {
         return getRoutines(context).stream().filter(Routine::isFavorite).collect(Collectors.toList());
@@ -126,7 +125,7 @@ public class Routine implements Comparable {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name.trim();
     }
 
     public Boolean[] getMap() {
@@ -153,6 +152,9 @@ public class Routine implements Comparable {
         return active;
     }
 
+    public void setActive(boolean active) {
+        this.active = active;
+    }
     public void setFavorite(boolean favorite) {
         isFavorite = favorite;
     }

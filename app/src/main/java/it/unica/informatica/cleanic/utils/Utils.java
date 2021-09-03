@@ -2,6 +2,10 @@ package it.unica.informatica.cleanic.utils;
 
 import android.view.View;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,6 +23,12 @@ public class Utils {
             v.setVisibility(View.INVISIBLE);
         else
             v.setVisibility(View.VISIBLE);
+    }
+
+    public static void switchToFragment(Fragment fragment, FragmentManager manager) {
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.content, fragment);
+        transaction.commit();
     }
 
     public static int halfCeil(int a) {

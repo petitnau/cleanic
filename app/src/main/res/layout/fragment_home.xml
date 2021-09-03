@@ -78,51 +78,22 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginHorizontal="8dp"
-                                android:drawableStart="@drawable/ic_baseline_notifications_24"
-                                android:drawableLeft="@drawable/ic_baseline_notifications_24"
+                                android:drawableStart="@drawable/ic_outline_donut_large_24"
+                                android:drawableLeft="@drawable/ic_outline_donut_large_24"
                                 android:paddingVertical="8dp"
-                                android:text=" Notifications"
+                                android:text=" Status"
                                 android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                                 android:textStyle="bold" />
 
                             <View style="@style/Divider" />
 
                             <LinearLayout
+                                android:id="@+id/notification_list"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@color/white"
                                 android:orientation="vertical"
                                 android:paddingBottom="8dp">
-
-                                <include
-                                    layout="@layout/notification_view"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-
-                                <com.google.android.material.divider.MaterialDivider
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    app:dividerColor="@color/bg_3"
-                                    app:dividerInsetEnd="14dp"
-                                    app:dividerInsetStart="14dp" />
-
-                                <include
-                                    layout="@layout/notification_view"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-
-                                <com.google.android.material.divider.MaterialDivider
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    app:dividerColor="@color/bg_3"
-                                    app:dividerInsetEnd="14dp"
-                                    app:dividerInsetStart="14dp" />
-
-                                <include
-                                    layout="@layout/notification_view"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-
                             </LinearLayout>
                         </LinearLayout>
 
