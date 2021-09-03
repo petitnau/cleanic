@@ -141,10 +141,10 @@ public class RoutineEditActivity extends AppCompatActivity {
         });
     }
 
-    private void setTime(int newHour, int newMinute) {
+    private void setTime(int newHour, int newMinutes) {
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.HOUR_OF_DAY, newHour);
-        cal.set(Calendar.MINUTE, newMinute);
+        cal.set(Calendar.MINUTE, newMinutes);
         cal.setLenient(false);
 
         String format = Utils.TIME_FORMATTER.format(cal.getTime());
@@ -154,9 +154,6 @@ public class RoutineEditActivity extends AppCompatActivity {
     }
 
     public void setDays(Boolean[] days) {
-        System.out.println("ORCO");
-        System.out.println(days);
-        System.out.println(weekdays);
         weekdays[0] = findViewById(R.id.MondayButton);
         weekdays[1] = findViewById(R.id.TuesdayButton);
         weekdays[2] = findViewById(R.id.WednesdayButton);
