@@ -25,18 +25,22 @@
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/activity_tutorial.xml" value="0.33" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/favorite_remote_page.xml" value="0.35655737704918034" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/favorite_view.xml" value="0.5" />
-        <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/fragment_home.xml" value="0.5" />
+        <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/fragment_home.xml" value="0.75" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/fragment_remote.xml" value="0.25" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/fragment_routine_edit.xml" value="0.3307291666666667" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/fragment_routines.xml" value="0.415625" />
-        <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/fragment_tutorial1.xml" value="0.278515625" />
+        <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/fragment_tutorial1.xml" value="0.33" />
+        <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/fragment_tutorial1a.xml" value="0.5" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/fragment_tutorial2.xml" value="0.415625" />
+        <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/fragment_tutorial2a.xml" value="0.4547008547008547" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/fragment_tutorial3.xml" value="0.415625" />
+        <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/fragment_tutorial_1a.xml" value="0.4547008547008547" />
+        <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/fragment_tutorial_wifi.xml" value="0.4547008547008547" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/notification_view.xml" value="0.67" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/routine_edit_activity.xml" value="0.22" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/routine_info_menu.xml" value="0.16736801836266257" />
-        <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/routine_view.xml" value="0.6275933609958506" />
-        <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/today_routine_view.xml" value="2.0" />
+        <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/routine_view.xml" value="0.75" />
+        <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/today_routine_view.xml" value="1.1" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/layout/wifi_connection_view.xml" value="0.67" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/menu/bottom_app_bar.xml" value="0.3307291666666667" />
         <entry key="..\:/Users/Dom-PC/Documents/Repo/GitHub/Projects/cleanic/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.32708333333333334" />

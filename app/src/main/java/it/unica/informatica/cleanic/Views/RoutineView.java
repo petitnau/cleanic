@@ -72,7 +72,7 @@ public class RoutineView extends LinearLayout {
         String name = routine.getName();
         routineName.setText(name.isEmpty() ? "Untitled" : name);
         if(routine.isFavorite()) {
-            routineName.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_favorite_24, 0);
+            routineName.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_favorite_24, 0, 0, 0);
         }
         switchMaterial.setChecked(routine.isActive());
 

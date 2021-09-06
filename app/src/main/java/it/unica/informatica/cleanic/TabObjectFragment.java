@@ -22,8 +22,6 @@ import it.unica.informatica.cleanic.utils.Routine;
 // object in our collection.
 public class TabObjectFragment extends Fragment
 {
-    public static final String ARG_OBJECT = "object";
-
     List<Routine> routines;
     List<MaterialCardView> cards;
 
@@ -49,7 +47,8 @@ public class TabObjectFragment extends Fragment
                 card.setVisibility(View.INVISIBLE);
             }
             else {
-                ((TextView) card.findViewById(R.id.favoriteText)).setText(routines.get(i).getName());
+                String name = routines.get(i).getName();
+                ((TextView) card.findViewById(R.id.favoriteText)).setText(name.isEmpty() ? "Untitled" : name);
             }
         }
     }

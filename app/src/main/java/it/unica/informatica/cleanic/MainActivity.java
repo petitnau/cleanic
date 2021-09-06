@@ -18,10 +18,17 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         boolean tutorialDone = preferences.getBoolean("tutorial", false);
-        tutorialDone = false;
-        if (tutorialDone)
-            startActivity(new Intent(this, HomeActivity.class));
-        else
-            startActivity(new Intent(this, TutorialActivity.class));
+//        tutorialDone = false;
+        Intent intent;
+        if (tutorialDone) {
+            intent = new Intent(this, HomeActivity.class);
+        } else {
+            intent = new Intent(this, TutorialActivity.class);
+
+        }
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }

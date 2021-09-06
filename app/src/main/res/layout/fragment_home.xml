@@ -28,13 +28,15 @@
                     android:layout_height="match_parent">
 
                     <ImageView
+                        android:id="@+id/map"
                         android:layout_width="match_parent"
                         android:layout_height="300sp"
                         android:layout_marginHorizontal="8dp"
                         android:adjustViewBounds="true"
                         android:padding="1dp"
                         android:scaleType="fitCenter"
-                        app:srcCompat="@drawable/map_height" />
+                        app:srcCompat="@drawable/map_base_robot" />
+
 
                     <!--android:scaleY="2"
                         android:scaleX="2"-->

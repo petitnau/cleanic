@@ -19,16 +19,14 @@ import androidx.fragment.app.Fragment;
 import java.util.ArrayList;
 
 import it.unica.informatica.cleanic.HomeActivity;
-import it.unica.informatica.cleanic.HomeFragment;
-import it.unica.informatica.cleanic.MainActivity;
 import it.unica.informatica.cleanic.R;
 import it.unica.informatica.cleanic.Views.WifiConnectionView;
 
-public class Tutorial3Fragment extends Fragment {
+public class TutorialWiFiFragment extends Fragment {
     LinearLayout wifiList;
     Button nextButton, backButton;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_tutorial3, container, false);
+        return inflater.inflate(R.layout.fragment_tutorial_wifi, container, false);
     }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -39,15 +37,12 @@ public class Tutorial3Fragment extends Fragment {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             preferences.edit().putBoolean("tutorial", true).apply();
 
-            Intent intent = new Intent(getContext(), HomeActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+            switchToFragment(new Tutorial2Fragment(), getActivity().getSupportFragmentManager());
         });
 
         backButton = getView().findViewById(R.id.back_button);
         backButton.setOnClickListener(v -> {
-            switchToFragment(new Tutorial2Fragment(), getActivity().getSupportFragmentManager());
+            switchToFragment(new Tutorial1Fragment(), getActivity().getSupportFragmentManager());
         });
 
         wifiList = getView().findViewById(R.id.wifiList);

@@ -6,12 +6,14 @@ import android.preference.PreferenceManager;
 
 import com.google.gson.Gson;
 
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Routine implements Comparable {
@@ -40,7 +42,7 @@ public class Routine implements Comparable {
                 .limit(7)
                 .toArray(Boolean[]::new);
         this.context = context;
-        this.active = false;
+        this.active = true;
     }
 
     public static List<Routine> getRoutines(Context context) {
@@ -174,51 +176,19 @@ public class Routine implements Comparable {
     }
 
     public String getWeekDaysText(){
-        String weekText = "";
-        int i = 0;
-        if(weekDays[0]) {
-            weekText += "Mon";
-            i++;
-        }
-        if(weekDays[1]) {
-            if(i > 0)
-                weekText += " ";
-            weekText += "Tue";
-            i++;
-        }
-        if(weekDays[2]) {
-            if(i > 0)
-                weekText += " ";
-            weekText += "Wed";
-            i++;
-        }
-        if(weekDays[3]) {
-            if(i > 0)
-                weekText += " ";
-            weekText += "Thu";
-        }
-        if(weekDays[4]) {
-            if(i > 0)
-                weekText += " ";
-            weekText += "Fri";
-            i++;
-        }
-        if(weekDays[5]) {
-            if(i > 0)
-                weekText += " ";
-            weekText += "Sat";
-            i++;
-        }
-        if(weekDays[6]) {
-            if(i > 0)
-                weekText += " ";
-            weekText += "Sun";
-            i++;
-        }
+        int count = (int) Arrays.stream(weekDays).filter(b->b).count();
 
-        if(i == 6) {
-            weekText = "Every Day";
+        switch(count) {
+            case 0:
+                return "Today";
+            case 7:
+                return "Every day";
+            default:
+                String[] nameDays = new String[]{"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
+                return IntStream.range(0,7)
+                        .filter(i -> weekDays[i])
+                        .mapToObj(i -> nameDays[i])
+                        .collect(Collectors.joining(" "));
         }
-        return weekText;
     }
 }

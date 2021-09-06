@@ -25,7 +25,7 @@ public class Tutorial2Fragment extends Fragment {
 
         nextButton = getView().findViewById(R.id.next_button);
         nextButton.setOnClickListener(v -> {
-            switchToFragment(new Tutorial3Fragment(), getActivity().getSupportFragmentManager());
+            switchToFragment(new Tutorial2AFragment(), getActivity().getSupportFragmentManager());
         });
 
         backButton = getView().findViewById(R.id.back_button);

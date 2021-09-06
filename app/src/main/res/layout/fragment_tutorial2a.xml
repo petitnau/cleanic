@@ -9,7 +9,37 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@id/imageView2"
         android:layout_width="match_parent"
-        android:layout_height="400dp">
+        android:layout_height="400dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:indeterminate="false"
+            app:indicatorSize="300dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:trackThickness="24dp" />
+
+        <ImageView
+            android:visibility="invisible"
+            android:id="@+id/progressbar_done"
+            android:layout_width="200dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/progressbar"
+            app:layout_constraintEnd_toEndOf="@+id/progressbar"
+            app:layout_constraintHorizontal_bias="0.49"
+            app:layout_constraintStart_toStartOf="@+id/progressbar"
+            app:layout_constraintTop_toTopOf="@+id/progressbar"
+            app:layout_constraintVertical_bias="0.0"
+            app:tint="?attr/colorPrimary"
+            app:srcCompat="@drawable/ic_baseline_done_24" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
@@ -18,7 +48,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
-        android:text="Continue"
+        android:text="Finish"
+        android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -29,32 +60,32 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginBottom="16dp"
-        android:text="Back"
+        android:text="Cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/title_text"
         style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:text="Cleanic will now scan your house to generate a map"
+        android:text="The cleanic is mapping your house"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <TextView
+        android:id="@+id/body_text"
         style="@style/TextAppearance.MaterialComponents.Body2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:text="Please remove any possible obstacle (chair, toys, etc.) from the floor."
+        android:text="This may take a long time, go do something else in the meantime"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/title_text" />
 </androidx.constraintlayout.widget.ConstraintLayout>
